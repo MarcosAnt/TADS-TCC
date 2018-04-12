@@ -6,10 +6,15 @@
 
 <!-- Cabeçalho -->
 <%@ include file="head.jsp" %>
-
-<div class="container">
+<div class="col-md-12 col-sm-12 col-xs-12">
+        <c:if test="${(!empty(msg))}">
+            <div class="alert alert-warning" role="alert">
+                <c:out value="${msg}"/>
+            </div>
+        </c:if>
+    <br>
     <div class="jumbotron">
-        <form action="LoginServlet">
+        <form action="LoginServlet" method="POST">
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input name="login" type="email" class="form-control" id="email">

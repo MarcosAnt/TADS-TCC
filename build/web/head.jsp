@@ -10,20 +10,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Param</title>
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.css">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.css">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css.map">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.map">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css.map">
+        <title>Sistema <c:out value="| ${title}" /></title>
+
+        <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/css/shop-homepage.css" rel="stylesheet">
+        
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="index.jsp">"Nome do Sistema ou Logo"</a>
+                <a class="navbar-brand" href="index.jsp">"Nome Sistema ou Logo"</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -35,7 +31,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="login.jsp">Login</a>
+                            <c:choose>
+                                <c:when test="${session.usuario == null}">
+                                    <a class="nav-link" href="login.jsp?action=logout">Logout</a>                                    
+                                </c:when>
+                                <c:when test="${session.usuario != null}">
+                                    <a class="nav-link" href="login.jsp">Login</a>                                    
+                                </c:when>
+                            </c:choose>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="MainPageServlet">Cadastrar</a>
@@ -44,3 +47,6 @@
                 </div>
             </div>
         </nav>
+      
+        <div class="container">
+            <div class="row">

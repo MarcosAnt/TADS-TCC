@@ -41,31 +41,45 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            String email = request.getParameter("login");
-            String senha = MD5.criptografar(request.getParameter("senha"));
-            
-            try{
-                User u = LoginFacade.verificaLogin(email, senha);
-                //se houver algum retorno
-                if(u != null){
-                    HttpSession session = request.getSession();
-                    //este dado na sessão indica que o usuário está logado
-                    session.setAttribute("usuario", u);
-                    //redireciona para a página inicial
-                    RequestDispatcher rd = request.getRequestDispatcher("teste.jsp");
+            String action = (String) request.getParameter("action");
+            if("logout".equals(action)) {
+                HttpSession session = request.getSession();
+                if(session != null){
+                    session.invalidate();
+                    
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                    request.setAttribute("title", "Inicio");
+                    request.setAttribute("msg", "Faça login para acessar esta página!");
                     rd.forward(request, response);
-                }else{
-                    // redireciona para login passando mensagem
-                    String param = URLEncoder.encode("Login ou Senha inválidos.", "UTF-8");
+                }
+            }
+            else {    
+                String email = request.getParameter("login");
+                String senha = MD5.criptografar(request.getParameter("senha"));
+
+                try{
+                    User u = LoginFacade.verificaLogin(email, senha);
+                    //se houver algum retorno
+                    if(u != null){
+                        HttpSession session = request.getSession();
+                        //este dado na sessão indica que o usuário está logado
+                        session.setAttribute("usuario", u);
+                        //redireciona para a página inicial
+                        RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+                        request.setAttribute("title", "Home");
+                        rd.forward(request, response);
+                    }else{
+                        // redireciona para login passando mensagem
+                        String param = URLEncoder.encode("Login ou Senha inválidos.", "UTF-8");
+                        response.sendRedirect("login.jsp?msg=" + param);
+                        return;
+                    }
+                }catch(AcessoBdException e){
+                     // para passar o parâmetro para o sendRedirect do jeito certo
+                    String param = URLEncoder.encode("Erro efetuando login [" + e.getMessage() + " - " + e.getCause().getMessage() + "]", "UTF-8");
                     response.sendRedirect("index.jsp?msg=" + param);
                     return;
                 }
-            }catch(AcessoBdException e){
-                 // para passar o parâmetro para o sendRedirect do jeito certo
-                String param = URLEncoder.encode("Erro efetuando login [" + e.getMessage() + " - " + e.getCause().getMessage() + "]", "UTF-8");
-                response.sendRedirect("index.jsp?msg=" + param);
-                return;
             }
         }
     }

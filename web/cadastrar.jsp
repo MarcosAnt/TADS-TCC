@@ -5,10 +5,8 @@
 --%>
 
 <!-- Cabeçalho -->
-<%@include file="head.jsp" %>
-      
-<div class="container">
-  
+<%@include file="head.jsp" %>  
+<div class="col-md-12 col-sm-12 col-xs-12">
     <form class="form-horizontal"  action="UserServlet?action=ADD"  method="POST" role="form">
         <h2>Cadastro de usuário</h2>
         <div class="form-group">
@@ -56,7 +54,7 @@
         </div>
         <div class="form-group">
             <label for="cel" class="col-sm-3 control-label">Celular:</label>
-                <div class="col-sm-9">
+            <div class="col-sm-9">
                 <input type="text" name="cel" id="cel" placeholder="" class="form-control" autofocus>
             </div>
         </div>
@@ -83,27 +81,26 @@
             <div class="col-sm-9">
                 <input type="text" name="cidade" id="cidade" placeholder="" class="form-control" autofocus required>
             </div>
-         </div> 
-           <div class="form-group">
+        </div> 
+        <div class="form-group">
             <label for="estado" class="col-sm-3 control-label">Estado:</label>
             <div class="col-sm-2">
                 <input type="text" name="estado" id="estado" placeholder="" class="form-control" autofocus required>
             </div>
-         </div>
-         <div class="form-group">
+        </div>
+        <div class="form-group">
             <label for="comple" class="col-sm-3 control-label">Complemento:</label>
             <div class="col-sm-9">
                 <input type="text" name="comple" id="comple" placeholder="" class="form-control" autofocus>
             </div>
-         </div>      
-         <div class="form-group">
+        </div>      
+        <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
                 <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
             </div>
-         </div>
-
-      </form> <!-- /form -->
-  </div> <!-- ./container -->
+        </div>
+</div>
+</form> <!-- ./form -->
 
 <!-- Rodapé -->
 <%@include file="footer.jsp" %>

@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Marcos/Documents/6Periodo/TCC/TCCPOOL/src/java/br/com/tads/tccpool/utils/MD5.java</file>
-            <file>file:/C:/Users/Marcos/Documents/6Periodo/TCC/TCCPOOL/src/java/br/com/tads/tccpool/utils/DB.properties</file>
-            <file>file:/C:/Users/Marcos/Documents/6Periodo/TCC/TCCPOOL/src/java/br/com/tads/tccpool/beans/Usuario.java</file>
+            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/home.jsp</file>
+            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/footer.jsp</file>
+            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/login.jsp</file>
+            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/cadastrar.jsp</file>
+            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/index.jsp</file>
+            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/servlets/LoginServlet.java</file>
+            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/head.jsp</file>
         </group>
     </open-files>
 </project-private>

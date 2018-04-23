@@ -15,6 +15,7 @@ import java.sql.SQLException;
  * @author onurb
  */
 public class LoginFacade {
+    
     public static User verificaLogin(String login, String senha) throws AcessoBdException{
         try{
             UserDAO dao = new UserDAO();
@@ -23,4 +24,5 @@ public class LoginFacade {
             throw new AcessoBdException("Erro de acesso so bd pela facede", e);
         }
     }
+
 }

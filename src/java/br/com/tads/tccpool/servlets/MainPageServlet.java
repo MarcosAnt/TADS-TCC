@@ -5,6 +5,7 @@
  */
 package br.com.tads.tccpool.servlets;
 
+import br.com.tads.tccpool.beans.Categoria;
 import br.com.tads.tccpool.beans.Instituicao;
 import br.com.tads.tccpool.exception.AcessoBdException;
 import br.com.tads.tccpool.facade.MainPageFacade;
@@ -44,18 +45,59 @@ public class MainPageServlet extends HttpServlet {
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            List<Instituicao> lista = new ArrayList<Instituicao>();
-            try{
-                lista = MainPageFacade.listaInstituicao();
-            }catch(AcessoBdException e){
-                e.printStackTrace();
-               String param = URLEncoder.encode("Erro na servlet cadastro " + e.getMessage() + " - " + e.getCause().getMessage() + "]", "UTF-8");
-                response.sendRedirect("index.jsp?msg=" + param);
+            
+            HttpSession session = request.getSession();
+            String action = request.getParameter("action");
+            switch(action){
+                case "EDITAR":
+                case "CLIENTE":
+                        List<Instituicao> lista = new ArrayList<Instituicao>();
+                        try{
+                            lista = MainPageFacade.listaInstituicao();
+                        }catch(AcessoBdException e){
+                            e.printStackTrace();
+                            String param = URLEncoder.encode("Erro na MainPageServlet " + e.getMessage() + " - " + e.getCause().getMessage() + "]", "UTF-8");
+                            response.sendRedirect("index.jsp?msg=" + param);
+                        }
+                        session.setAttribute("lista", lista);
+                        if("EDITAR".equals(action)) {
+                            RequestDispatcher rd = request.getRequestDispatcher("editar.jsp");
+                            rd.forward(request, response);
+                        }
+                        else {
+                            RequestDispatcher rd = request.getRequestDispatcher("cadastrar.jsp");
+                            rd.forward(request, response);
+                        }
+                            
+                    break;
+                /*case "EDITAR":
+                        List<Instituicao> listaEditar = new ArrayList<Instituicao>();
+                        try{
+                            listaEditar = MainPageFacade.listaInstituicao();
+                        }catch(AcessoBdException e){
+                            e.printStackTrace();
+                            String param = URLEncoder.encode("Erro na servlet edição " + e.getMessage() + " - " + e.getCause().getMessage() + "]", "UTF-8");
+                            response.sendRedirect("index.jsp?msg=" + param);
+                        }
+                        session.setAttribute("lista", listaEditar);
+                        RequestDispatcher rdEditar = request.getRequestDispatcher("editar.jsp");
+                        rdEditar.forward(request, response);
+                    break;*/
+                case "ANUNCIO":
+                    List<Categoria> listaCategoria = new ArrayList<Categoria>();
+                    try{
+                        listaCategoria = MainPageFacade.listaCategorias();
+                    }catch(AcessoBdException e){
+                        e.printStackTrace();
+                        String param = URLEncoder.encode("Erro na servlet cadastro " + e.getMessage() + " - " + e.getCause().getMessage() + "]", "UTF-8");
+                        response.sendRedirect("index.jsp?msg=" + param);
+                    }
+                    session.setAttribute("listaCat", listaCategoria);
+                    RequestDispatcher rd2 = request.getRequestDispatcher("cadastroImovel.jsp");
+                            rd2.forward(request, response);
+                    break;
             }
-           HttpSession session = request.getSession();
-           session.setAttribute("lista", lista);
-           RequestDispatcher rd = request.getRequestDispatcher("cadastrar.jsp");
-                    rd.forward(request, response);
+            
         }
     }
 

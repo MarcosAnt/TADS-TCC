@@ -10,7 +10,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sistema <c:out value="| ${title}" /></title>
+        <c:choose>
+            <c:when test="${title != null}">
+                <title>Sistema <c:out value="| ${title}"/></title>
+            </c:when>
+            <c:otherwise>
+                <title>Sistema | &Iacute;nicio</title>
+            </c:otherwise>
+        </c:choose>
+        
 
         <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/css/shop-homepage.css" rel="stylesheet">
@@ -25,23 +33,28 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.jsp">Home
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <c:choose>
-                                <c:when test="${session.usuario == null}">
-                                    <a class="nav-link" href="login.jsp?action=logout">Logout</a>                                    
+                                <c:when test="${user != null}">
+                                    <a class="nav-link" href="home.jsp">Home</a>                                    
                                 </c:when>
-                                <c:when test="${session.usuario != null}">
-                                    <a class="nav-link" href="login.jsp">Login</a>                                    
-                                </c:when>
+                                <c:otherwise>
+                                    <a class="nav-link" href="index.jsp">Home</a>                                    
+                                </c:otherwise>
                             </c:choose>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="MainPageServlet">Cadastrar</a>
+                            <c:choose>
+                                <c:when test="${user != null}">
+                                    <a class="nav-link" href="login.jsp?action=logout">Logout</a>                                    
+                                </c:when>
+                                <c:otherwise>
+                                    <a class="nav-link" href="login.jsp">Login</a>                                    
+                                </c:otherwise>
+                            </c:choose>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="MainPageServlet?action=CLIENTE">Cadastrar</a>
                         </li>
                     </ul>
                 </div>

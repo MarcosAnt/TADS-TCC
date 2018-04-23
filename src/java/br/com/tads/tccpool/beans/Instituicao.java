@@ -5,13 +5,11 @@
  */
 package br.com.tads.tccpool.beans;
 
-import java.io.Serializable;
-
 /**
  *
  * @author onurb
  */
-public class Instituicao implements Serializable{
+public class Instituicao {
     private int id;
     private String nome;
 

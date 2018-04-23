@@ -14,7 +14,7 @@
         </c:if>
     <br>
     <div class="jumbotron">
-        <form action="LoginServlet" method="POST">
+        <form id="frmLogin" action="LoginServlet" method="POST">
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input name="login" type="email" class="form-control" id="email">
@@ -24,10 +24,11 @@
                 <input name="senha" type="password" class="form-control" id="pwd">
             </div>
             <div class="checkbox">
-                <label><input type="checkbox"> Remember me</label>
+                <label><input id="remember" type="checkbox"> Lembre-se de mim</label>
             </div>
             <button type="submit" class="btn btn-success">Logar</button>
         </form>
+        <small>Ou, se ainda n&abreve;o possu&iacute; uma conta, <a href="MainPageServlet?action=CLIENTE">clique aqui e cadastre-se</a>!</small>
     </div>
 </div>    
 

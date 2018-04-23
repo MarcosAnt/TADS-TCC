@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,30 +52,32 @@ public class UserServlet extends HttpServlet {
                     u.setNome(request.getParameter("nome"));
                     u.setCpf(request.getParameter("cpf"));
                     u.setEmail(request.getParameter("email"));
-                    String senha = request.getParameter("senha");
-                    u.setSenha(MD5.criptografar(senha));
+                    u.setSenha(MD5.criptografar(request.getParameter("senha")));
                     u.setInstituicao(Integer.parseInt(request.getParameter("inst")));
-                    u.setTel((String) request.getParameter("tel"));
-                    if(!(request.getParameter("cel").equalsIgnoreCase(""))){
-                        u.setCel((String) request.getParameter("cel"));
-                    }
-                    else{
+                    u.setTel(request.getParameter("tel"));
+                    if(!(request.getParameter("cel").equalsIgnoreCase("")))
+                        u.setCel(request.getParameter("cel"));
+                    else
                         u.setCel("");
-                    }
                     u.setLogradouro(request.getParameter("rua"));
                     u.setNumero(Integer.parseInt(request.getParameter("num")));
-                    u.setCep(Integer.parseInt(request.getParameter("cep")));
+                    u.setCep(request.getParameter("cep"));
                     u.setCidade(request.getParameter("cidade"));
                     u.setEstado(request.getParameter("estado"));
-                    if(!(request.getParameter("comple").equalsIgnoreCase(""))){
+                    if(!(request.getParameter("comple").equalsIgnoreCase("")))
                         u.setComplemento(request.getParameter("comple"));
-                    }
-                    else{
+                    else
                         u.setComplemento(null);
-                    }
                     
                     try {
-                        UserFacade.insereUsuario(u, 1);
+                        User userLogado = UserFacade.insereUsuario(u);
+                        if(userLogado == null) {
+                            response.sendRedirect("erro.jsp");
+                        }
+                        else {
+                            response.sendRedirect("login.jsp");
+                        }
+                        
                     } catch (AcessoBdException ex) {
                          throw new RuntimeException(ex);
                     } catch (SQLException ex) {
@@ -84,7 +87,12 @@ public class UserServlet extends HttpServlet {
                     
                     break;
                 }
-                case "EDIT":{
+                case "SEARCH":{
+                    User userSession = (User) session.getAttribute("user");
+                    User userSearch = UserFacade.buscarUsuario(userSession.getId());
+                    session.setAttribute("userSearch", userSearch);
+                    RequestDispatcher rd = request.getRequestDispatcher("MainPageServlet?action=EDITAR");
+                    rd.forward(request, response);
                     break;
                 }
                 case "REMOVE":{

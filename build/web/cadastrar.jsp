@@ -6,7 +6,7 @@
 
 <!-- Cabeçalho -->
 <%@include file="head.jsp" %>  
-<div class="col-md-12 col-sm-12 col-xs-12">
+<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
     <form class="form-horizontal"  action="UserServlet?action=ADD"  method="POST" role="form">
         <h2>Cadastro de usuário</h2>
         <div class="form-group">
@@ -99,8 +99,8 @@
                 <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
             </div>
         </div>
-</div>
 </form> <!-- ./form -->
+</div>
 
 <!-- Rodapé -->
 <%@include file="footer.jsp" %>

@@ -12,7 +12,6 @@ import br.com.tads.tccpool.utils.MD5;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
-import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,7 +41,7 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String action = (String) request.getParameter("action");
-            if("logout".equals(action)) {
+            if("LOGOUT".equals(action)) {
                 HttpSession session = request.getSession();
                 if(session != null){
                     session.invalidate();
@@ -53,7 +52,7 @@ public class LoginServlet extends HttpServlet {
                     rd.forward(request, response);
                 }
             }
-            else {    
+            else {
                 String email = request.getParameter("login");
                 String senha = MD5.criptografar(request.getParameter("senha"));
 
@@ -63,15 +62,15 @@ public class LoginServlet extends HttpServlet {
                     if(u != null){
                         HttpSession session = request.getSession();
                         //este dado na sessão indica que o usuário está logado
-                        session.setAttribute("usuario", u);
+                        session.setAttribute("user", u);
                         //redireciona para a página inicial
-                        RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
                         request.setAttribute("title", "Home");
+                        RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
                         rd.forward(request, response);
                     }else{
                         // redireciona para login passando mensagem
                         String param = URLEncoder.encode("Login ou Senha inválidos.", "UTF-8");
-                        response.sendRedirect("login.jsp?msg=" + param);
+                        response.sendRedirect("index.jsp?msg=" + param);
                         return;
                     }
                 }catch(AcessoBdException e){

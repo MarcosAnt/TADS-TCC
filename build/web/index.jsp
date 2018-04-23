@@ -16,7 +16,7 @@
         </c:if>
         <div class="list-group">
             <a class="list-group-item" href="login.jsp">Login</a>
-            <a class="list-group-item" href="MainPageServlet">Cadastrar</a>
+            <a class="list-group-item" href="MainPageServlet?action=CLIENTE">Cadastrar</a>
         </div>
     </div>
 </div>

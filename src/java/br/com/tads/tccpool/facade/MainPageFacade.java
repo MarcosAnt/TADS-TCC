@@ -5,7 +5,9 @@
  */
 package br.com.tads.tccpool.facade;
 
+import br.com.tads.tccpool.beans.Categoria;
 import br.com.tads.tccpool.beans.Instituicao;
+import br.com.tads.tccpool.dao.CategoriaDAO;
 import br.com.tads.tccpool.dao.InstituicaoDAO;
 import br.com.tads.tccpool.exception.AcessoBdException;
 import java.sql.SQLException;
@@ -27,4 +29,12 @@ public class MainPageFacade {
             dao.close();
         }
     }
+    public static List<Categoria> listaCategorias() throws AcessoBdException, SQLException{
+       CategoriaDAO dao = new CategoriaDAO();
+        try{ 
+            return dao.getCategorias();
+       }finally{
+           dao.close();
+       }
+    } 
 }

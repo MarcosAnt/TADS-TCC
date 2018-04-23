@@ -5,13 +5,11 @@
  */
 package br.com.tads.tccpool.beans;
 
-import java.io.Serializable;
-
 /**
  *
  * @author onurb
  */
-public class User implements Serializable{
+public class User {
     private int id;
     private String nome;
     private String cpf;
@@ -22,17 +20,17 @@ public class User implements Serializable{
     private String cel;
     private String logradouro;
     private int numero;
-    private int cep;
+    private String CEP;
     private String complemento;
     private String cidade;
     private String estado;
 
     public int getId() {
-      return id;
+        return id;
     }
 
     public void setId(int id) {
-      this.id = id;
+        this.id = id;
     }
     
     public String getNome() {
@@ -107,12 +105,12 @@ public class User implements Serializable{
         this.numero = numero;
     }
 
-    public int getCep() {
-        return cep;
+    public String getCep() {
+        return CEP;
     }
 
-    public void setCep(int cep) {
-        this.cep = cep;
+    public void setCep(String cep) {
+        this.CEP = cep;
     }
 
     public String getComplemento() {

@@ -17,11 +17,11 @@
         <form id="frmLogin" action="LoginServlet" method="POST">
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input name="login" type="email" class="form-control" id="email">
+                <input name="login" type="email" class="form-control" id="email" required="true">
             </div>
             <div class="form-group">
                 <label for="pwd">Senha:</label>
-                <input name="senha" type="password" class="form-control" id="pwd">
+                <input name="senha" type="password" class="form-control" id="pwd" required="true">
             </div>
             <div class="checkbox">
                 <label><input id="remember" type="checkbox"> Lembre-se de mim</label>

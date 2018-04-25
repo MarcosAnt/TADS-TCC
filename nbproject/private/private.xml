@@ -3,20 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/footer.jsp</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/facade/MainPageFacade.java</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/servlets/UserServlet.java</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/head.jsp</file>
             <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/home.jsp</file>
             <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/login.jsp</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/facade/LoginFacade.java</file>
+            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/footer.jsp</file>
             <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/cadastrar.jsp</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/assets/js/login.js</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/servlets/LoginServlet.java</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/dao/UserDAO.java</file>
+            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/assets/js/helperFunctions.js</file>
             <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/editar.jsp</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/servlets/MainPageServlet.java</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/facade/UserFacade.java</file>
         </group>
     </open-files>
 </project-private>

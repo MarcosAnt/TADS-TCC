@@ -18,21 +18,23 @@
         <script src="assets/bootstrap/js/bootstrap.bundle.js" type="text/javascript"></script>
         <script src="assets/jquery/plugins/js-cookie.js" type="text/javascript"></script>
         
-        <!-- Importa funÁıes padr„o -->
+        <!-- Importa fun√ß√µes padr√£o -->
         <script src="assets/js/helperFunctions.js" type="text/javascript"></script>
         
         <script type="text/javascript">
             $(document).ready(function(){ 
                 setCopyright();
+                
                 var paginaAtual = location.href;
-                //Se estiver na p·gina de login faz os precedimentos da opÁ„o "Lembre-se de mim"
+                //Se estiver na p√°gina de login faz os precedimentos da op√ß√£o "Lembre-se de mim"
                 if(paginaAtual.indexOf("login.jsp")) {
                     var cookieValue = getCookieValue("emailUser"); 
                     if(typeof cookieValue !== "undefined" || cookieValue !== false) {
-                        //Se j· existe um cookie setado, recupera os dados do mesmo e coloca no input
+                        $('#remember').prop('checked', 'true');
+                        //Se j√° existe um cookie setado, recupera os dados do mesmo e coloca no input
                         $("#email").val(cookieValue);
                     }
-                    //Adiciona evento no formul·rio de login para salvar o cookie caso 
+                    //Adiciona evento no formul√°rio de login para salvar o cookie caso 
                     $('#frmLogin').submit(function(event){
                         var inputChecked = $('#remember').prop('checked');
                         var emailUser = $('#email').val();
@@ -41,7 +43,7 @@
                             event.preventDefault();
                         }
                         else {
-                            //Se o campo "Lembre-se de mim" n„o estiver marcado ent„o remove o cookie caso exista
+                            //Se o campo "Lembre-se de mim" n√£o estiver marcado ent√£o remove o cookie caso exista
                             removeCookie("emailUser");
                         }
                     });

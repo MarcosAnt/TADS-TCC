@@ -87,6 +87,57 @@ public class UserServlet extends HttpServlet {
                     
                     break;
                 }
+                case "EDIT":{
+                    User userSearch = (User) session.getAttribute("userSearch");
+                    
+                    u.setId(userSearch.getId());
+                    u.setNome(request.getParameter("nome"));
+                    u.setCpf(request.getParameter("cpf"));
+                    u.setEmail(request.getParameter("email"));
+                    
+                    String senha = MD5.criptografar(request.getParameter("senha"));
+                    String confirmaSenha = MD5.criptografar(request.getParameter("confirmaSenha"));
+                    
+                    if(senha.equals(confirmaSenha)) {
+                        u.setSenha(senha);
+                    }
+                    else {
+                        //Se o campo senha não foi preenchido seta a senha para a mesma q está na session
+                        senha = userSearch.getSenha();
+                        u.setSenha(senha);
+                    }
+                        
+                    u.setInstituicao(Integer.parseInt(request.getParameter("inst")));
+                    u.setTel(request.getParameter("tel"));
+                    if(!(request.getParameter("cel").equalsIgnoreCase("")))
+                        u.setCel(request.getParameter("cel"));
+                    else
+                        u.setCel("");
+                    //CdEndereco necessário para editar o registro no banco de dados
+                    u.setCdEndereco(Integer.parseInt(request.getParameter("cdEndereco")));
+                    u.setLogradouro(request.getParameter("rua"));
+                    u.setNumero(Integer.parseInt(request.getParameter("num")));
+                    u.setCep(request.getParameter("cep"));
+                    u.setCidade(request.getParameter("cidade"));
+                    u.setEstado(request.getParameter("estado"));
+                    if(!(request.getParameter("comple").equalsIgnoreCase("")))
+                        u.setComplemento(request.getParameter("comple"));
+                    else
+                        u.setComplemento(null);
+                    
+                    Boolean editOK = UserFacade.editarUsuario(u, userSearch.getCpf());
+                    
+                    if(editOK) {
+                        response.sendRedirect("home.jsp");
+                        //return para evitar loops
+                        return;
+                    }
+                    else {
+                        response.sendRedirect("UserServlet?action=SEARCH");
+                    }
+                    
+                    break;
+                }
                 case "SEARCH":{
                     User userSession = (User) session.getAttribute("user");
                     User userSearch = UserFacade.buscarUsuario(userSession.getId());

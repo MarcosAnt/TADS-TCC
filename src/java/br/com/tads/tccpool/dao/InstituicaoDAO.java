@@ -20,7 +20,7 @@ import java.util.List;
  * @author onurb
  */
 public class InstituicaoDAO {
-    private static final String QUERY_INST = "SELECT NR_SEQ,NM_INST FROM TBL_INSTITUICOES";
+    private static final String QUERY_INST = "SELECT NR_SEQ,NM_INST FROM TB_INSTITUICOES";
     private Connection con = null;
     private PreparedStatement stmt = null;
     private ResultSet rs = null;

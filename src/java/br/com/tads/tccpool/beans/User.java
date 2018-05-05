@@ -10,20 +10,21 @@ package br.com.tads.tccpool.beans;
  * @author onurb
  */
 public class User {
-    private int id;
-    private String nome;
-    private String cpf;
-    private String email;
-    private String senha;
-    private int instituicao;
-    private String tel;
-    private String cel;
-    private String logradouro;
-    private int numero;
-    private String CEP;
-    private String complemento;
-    private String cidade;
-    private String estado;
+    private int id;             //Número identificador do usuário
+    private String nome;        //Nome do usuário
+    private String cpf;         //CPF do usuário
+    private String email;       //E-mail do usuário
+    private String senha;       //Senha do usuário
+    private int instituicao;    //Número identificador do usuário
+    private String tel;         //Número de telefone do usuário
+    private String cel;         //Número de telefone celular do usuário
+    private int cdEndereco;     //Número identificador do endereço do usuário
+    private String logradouro;  //Nome da rua do usuário
+    private int numero;         //Número da casa do usuário
+    private String CEP;         //CEP do usuário
+    private String complemento; //Complemento do endereço do usuário
+    private String cidade;      //Nome da cidade do usuário
+    private String estado;      //Nome do estado do usuário
 
     public int getId() {
         return id;
@@ -87,6 +88,22 @@ public class User {
 
     public void setCel(String cel) {
         this.cel = cel;
+    }
+
+    public int getCdEndereco() {
+        return cdEndereco;
+    }
+
+    public void setCdEndereco(int cdEndereco) {
+        this.cdEndereco = cdEndereco;
+    }
+
+    public String getCEP() {
+        return CEP;
+    }
+
+    public void setCEP(String CEP) {
+        this.CEP = CEP;
     }
 
     public String getLogradouro() {

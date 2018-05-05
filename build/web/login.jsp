@@ -17,7 +17,7 @@
         <form id="frmLogin" action="LoginServlet" method="POST">
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input name="login" type="email" class="form-control" id="email" required="true">
+                <input name="login" type="email" class="form-control" id="emailLogin" required="true">
             </div>
             <div class="form-group">
                 <label for="pwd">Senha:</label>
@@ -31,6 +31,29 @@
         <small>Ou, se ainda n&abreve;o possu&iacute; uma conta, <a href="MainPageServlet?action=CLIENTE">clique aqui e cadastre-se</a>!</small>
     </div>
 </div>    
+<!-- Importando plugin JSCookie para trabalhar com cookies do navegador -->
+<script src="assets/jquery/plugins/js-cookie.js" type="text/javascript"></script>
+<script type="text/javascript">    
+    var cookieValue = getCookieValue("emailUser"); 
+    if(typeof cookieValue !== "undefined" || cookieValue !== false) {
+        $('#remember').prop('checked', 'true');
+        //Se já existe um cookie setado, recupera os dados do mesmo e coloca no input
+        $("#emailLogin").val(cookieValue);
+    }
+    //Adiciona evento no formulário de login para salvar o cookie caso 
+    $('#frmLogin').submit(function(event){
+        var inputChecked = $('#remember').prop('checked');
+        var emailUser = $('#emailLogin').val();
+        if(inputChecked && emailUser !== getCookieValue("emailUser")) {
+            setCookie("emailUser", emailUser, 365);
+            event.preventDefault();
+        }
+        else {
+            //Se o campo "Lembre-se de mim" não estiver marcado então remove o cookie caso exista
+            removeCookie("emailUser");
+        }
+    });
+</script>
 
 <!-- Rodap� -->
 <%@ include file="footer.jsp" %>

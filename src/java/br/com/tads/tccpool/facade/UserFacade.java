@@ -43,4 +43,23 @@ public class UserFacade {
             }
         }
     }
+    
+    /**
+     * Editar ifnormações do usuário no banco de dados
+     * @param u Bean User com as informações a serem inseridas no banco de dados
+     * @param CPFUser CPF do usuário para identificar o registro no banco de dados
+     * @return 
+     */
+    public static Boolean editarUsuario(User u, String CPFUser) {
+        UserDAO dao = new UserDAO();
+        try {
+            dao.editarUser(u, CPFUser);
+            return true;
+        }
+        catch (Exception e) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
+        
 }

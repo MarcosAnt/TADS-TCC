@@ -11,7 +11,8 @@
 </c:if>
 
 <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-    <form class="form-horizontal"  action="UserServlet?action=ADD"  method="POST" role="form">
+    <form id="formEditar" class="form-horizontal"  action="UserServlet?action=EDIT"  method="POST" role="form">
+        <input id="cdEndereco" type="hidden" name="cdEndereco" value="<c:out value="${userSearch.getCdEndereco()}"/>">
         <h2>Cadastro de usuário</h2>
         <div class="form-group">
             <label for="nome" class="col-sm-3 control-label">Nome Completo:</label>
@@ -34,7 +35,16 @@
         <div class="form-group">
             <label for="senha" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-9">
-                <input type="password" name="senha" id="senha" value="<c:out value="${userSearch.getSenha()}"/>" placeholder="Password" class="form-control" required>
+                <input type="password" name="senha" id="senha" value="" placeholder="Password" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <div id="alertaSenha" class="col-sm-5 col-lg-5 col-xs-12" style="display: none">
+                <p class="alert alert-danger" role="alert">As senhas n&atilde;o coincidem!</p>
+            </div>
+            <label for="confirmaSenha" class="col-sm-3 control-label">Confirmar Password</label>
+            <div class="col-sm-9">
+                <input type="password" name="confirmaSenha" id="confirmaSenha" value="" placeholder="Confirmar Password" class="form-control">
             </div>
         </div>
         <div class="form-group">
@@ -101,11 +111,37 @@
             </div>
         </div>      
         <div class="form-group">
-            <div class="col-sm-9 col-sm-offset-3">
+            <div class="col-sm-9 col-lg-9 col-md-9 col-xs-9 col-sm-offset-3">
                 <button type="submit" class="btn btn-primary btn-block" onclick="confirm('Deseja mesmo alterar os dados?');">Salvar</button>
             </div>
         </div>
 </form> <!-- ./form -->
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var senha = $('#senha');
+        var confirmaSenha = $('#confirmaSenha');
+        $('#confirmaSenha').change(function(){
+            $(senha).attr('required', 'true');
+            $(confirmaSenha).attr('required', 'true');
+            
+            if($(senha).val() !== $(confirmaSenha).val()) {
+                $('#alertaSenha').css('display', 'block');
+            }
+            else {
+                $('#alertaSenha').css('display', 'none');
+            }
+        });
+        
+        $('#formEditar').submit(function(event){
+            if($(senha).val() !== $(confirmaSenha).val()) {
+                $('#alertaSenha').css('display', 'block');
+                event.preventDefault();
+                $(window).scrollTop($('#alertaSenha').scrollTop());
+            }
+        });
+    });
+</script>
 <!-- Rodapé -->
 <%@include file="footer.jsp" %>

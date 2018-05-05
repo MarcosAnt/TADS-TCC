@@ -70,19 +70,6 @@ public class MainPageServlet extends HttpServlet {
                         }
                             
                     break;
-                /*case "EDITAR":
-                        List<Instituicao> listaEditar = new ArrayList<Instituicao>();
-                        try{
-                            listaEditar = MainPageFacade.listaInstituicao();
-                        }catch(AcessoBdException e){
-                            e.printStackTrace();
-                            String param = URLEncoder.encode("Erro na servlet edição " + e.getMessage() + " - " + e.getCause().getMessage() + "]", "UTF-8");
-                            response.sendRedirect("index.jsp?msg=" + param);
-                        }
-                        session.setAttribute("lista", listaEditar);
-                        RequestDispatcher rdEditar = request.getRequestDispatcher("editar.jsp");
-                        rdEditar.forward(request, response);
-                    break;*/
                 case "ANUNCIO":
                     List<Categoria> listaCategoria = new ArrayList<Categoria>();
                     try{

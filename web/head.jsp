@@ -12,10 +12,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <c:choose>
             <c:when test="${title != null}">
-                <title>Sistema <c:out value="| ${title}"/></title>
+                <title>Mercad&atilde;o do Aluno <c:out value="| ${title}"/></title>
             </c:when>
             <c:otherwise>
-                <title>Sistema | &Iacute;nicio</title>
+                <title>Mercad&atilde;o do Aluno | &Iacute;nicio</title>
             </c:otherwise>
         </c:choose>
         
@@ -27,7 +27,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="index.jsp">"Nome Sistema ou Logo"</a>
+                <a class="navbar-brand" href="index.jsp">Mercad&atilde;o do Aluno</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -54,12 +54,24 @@
                             </c:choose>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="MainPageServlet?action=CLIENTE">Cadastrar</a>
+                            <c:choose>
+                                <c:when test="${user != null}">
+                                    <a class="nav-link" href="MainPageServlet?action=ANUNCIO">Anunciar</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a class="nav-link" href="MainPageServlet?action=CLIENTE">Cadastrar</a>
+                                </c:otherwise>
+                            </c:choose>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-      
+        
+        <!-- Adicionando jQuery para ser utilizado nas funções -->
+        <script src="assets/jquery/jquery.min.js" type="text/javascript"></script>
+        <!-- Importa funções padrão -->
+        <script src="assets/js/helperFunctions.js" type="text/javascript"></script>
+        
         <div class="container">
             <div class="row">

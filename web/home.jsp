@@ -14,8 +14,10 @@
     <div class="col-sm-12 col-md-10 col-lg-4 col-xs-4">
         <div class="list-group">
             <a class="list-group-item" href="UserServlet?action=SEARCH">Editar Perfil</a>
+            <a class="list-group-item" href="escolhaAnuncio.jsp">Realizar um Anuncio</a>
+            <a class="list-group-item" href="escolhaPendente.jsp">Aprovar Anuncio(só vai aparecer para ADM)</a>
             <a class="list-group-item list-group-item-danger" href="LoginServlet?action=LOGOUT">Logout</a>
-        </div>
+        </div>o.jsp">Aprovar Anuncio(só vai aparecer para ADM)</a>
     </div>
 </div>
 

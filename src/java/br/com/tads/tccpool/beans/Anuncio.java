@@ -6,13 +6,14 @@
 package br.com.tads.tccpool.beans;
 
 import br.com.tads.tccpool.interfaces.Anunciavel;
+import java.io.Serializable;
 
 
 /**
  *
  * @author onurb
  */
-public class Anuncio{
+public class Anuncio implements Serializable {
     public Anunciavel obj;
 
     public Anunciavel getObj() {

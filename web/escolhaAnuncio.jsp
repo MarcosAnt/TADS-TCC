@@ -12,8 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <a href="MainPageServlet?action=ANUNCIO">Imóvel</a></br>
-        <a href="">Móvel</a></br>
-        <a href="">Material</a></br>
+        <a href="MainPageServlet?action=ANUNCIO&tipo=imovel">Imóvel</a></br>
+        <a href="MainPageServlet?action=ANUNCIO&tipo=movel">Móvel</a></br>
+        <a href="MainPageServlet?action=ANUNCIO&tipo=material">Material</a></br>
     </body>
 </html>

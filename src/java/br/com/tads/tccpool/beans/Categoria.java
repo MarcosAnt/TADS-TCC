@@ -5,11 +5,13 @@
  */
 package br.com.tads.tccpool.beans;
 
+import java.io.Serializable;
+
 /**
  *
  * @author onurb
  */
-public class Categoria {
+public class Categoria implements Serializable {
     private int id;
     private String descricao;
 

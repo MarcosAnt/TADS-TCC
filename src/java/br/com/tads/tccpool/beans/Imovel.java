@@ -6,19 +6,22 @@
 package br.com.tads.tccpool.beans;
 
 import br.com.tads.tccpool.interfaces.Anunciavel;
+import java.io.Serializable;
 
 /**
  *
  * @author onurb
  */
-public class Imovel implements Anunciavel{
-   private String descricao;
-   private String titulo;
-   private float preco;
-   private String rua;
-   private int numero;
-   private String estado;
-   private String cidade;
+public class Imovel implements Anunciavel, Serializable {
+    private String descricao;
+    private String titulo;
+    private float preco;
+    private String rua;
+    private int numero;
+    private String estado;
+    private String cidade;
+    private String cep;
+    private String complemento="";
 
     public String getCidade() {
         return cidade;
@@ -27,8 +30,6 @@ public class Imovel implements Anunciavel{
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
-   private String cep;
-   private String complemento="";
 
     public String getRua() {
         return rua;
@@ -69,31 +70,35 @@ public class Imovel implements Anunciavel{
     public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
-    
-   @Override
+
+    @Override
     public String getTitulo() {
         return titulo;
     }
+
     @Override
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-   @Override
+
+    @Override
     public float getPreco() {
         return preco;
     }
-   @Override
+
+    @Override
     public void setPreco(float preco) {
         this.preco = preco;
     }
+
     @Override
     public void setDescricao(String desc) {
         this.descricao = desc;
     }
+
     @Override
     public String getDescricao() {
         return this.descricao;
     }
-   
-   
+
 }

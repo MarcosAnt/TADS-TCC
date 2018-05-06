@@ -48,6 +48,7 @@ public class MainPageServlet extends HttpServlet {
             
             HttpSession session = request.getSession();
             String action = request.getParameter("action");
+            String tipo = request.getParameter("tipo");
             switch(action){
                 case "EDITAR":
                 case "CLIENTE":
@@ -56,7 +57,7 @@ public class MainPageServlet extends HttpServlet {
                             lista = MainPageFacade.listaInstituicao();
                         }catch(AcessoBdException e){
                             e.printStackTrace();
-                            String param = URLEncoder.encode("Erro na MainPageServlet " + e.getMessage() + " - " + e.getCause().getMessage() + "]", "UTF-8");
+                            String param = URLEncoder.encode("Erro na servlet cadastro " + e.getMessage() + " - " + e.getCause().getMessage() + "]", "UTF-8");
                             response.sendRedirect("index.jsp?msg=" + param);
                         }
                         session.setAttribute("lista", lista);
@@ -80,8 +81,22 @@ public class MainPageServlet extends HttpServlet {
                         response.sendRedirect("index.jsp?msg=" + param);
                     }
                     session.setAttribute("listaCat", listaCategoria);
-                    RequestDispatcher rd2 = request.getRequestDispatcher("cadastroImovel.jsp");
+                    RequestDispatcher rd2;
+                            
+                      switch(tipo){
+                        case "imovel":
+                            rd2 = request.getRequestDispatcher("cadastroImovel.jsp");
                             rd2.forward(request, response);
+                            break;
+                        case "movel":
+                            rd2 = request.getRequestDispatcher("cadastroMovel.jsp");
+                            rd2.forward(request, response);
+                            break;
+                        case "material":
+                            rd2 = request.getRequestDispatcher("cadastroMaterial.jsp");
+                            rd2.forward(request, response);
+                            break;
+                    }
                     break;
             }
             

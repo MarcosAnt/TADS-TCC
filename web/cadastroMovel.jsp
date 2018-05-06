@@ -17,8 +17,8 @@
     </head>
     <body>
       <div class="container">
-          <form class="form-horizontal"  action="AnuncioServlet?action=ADDIMV"  method="POST" role="form" enctype="multipart/form-data">
-                <h2>Cadastro de Anuncio: Imóvel</h2>
+          <form class="form-horizontal"  action="AnuncioServlet?action=ADDMOVEL"  method="POST" role="form" enctype="multipart/form-data">
+                <h2>Cadastro de Anuncio: Móvel</h2>
                 <div class="form-group">
                     <label for=titulo class="col-sm-3 control-label">Titulo:</label>
                     <div class="col-sm-9">
@@ -40,56 +40,31 @@
                     </div>
                 </div>
                  <div class="form-group">
-                    <label for="rua" class="col-sm-3 control-label">Logradouro:</label>
+                    <label for="file" class="col-sm-3 control-label">Selecione uma Imagem</label>
                     <div class="col-sm-9">
-                        <input type="text" name="rua" id="rua" placeholder="" class="form-control" autofocus required>
+                        <input type="file" name="file" id="file" placeholder="" class="form-control" autofocus required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="num" class="col-sm-3 control-label">Número:</label>
-                    <div class="col-sm-2">
-                        <input type="text" name="num" id="num" placeholder="" class="form-control" autofocus required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="cep" class="col-sm-3 control-label">CEP:</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="cep" id="cep" placeholder="" class="form-control" autofocus required>
-                    </div>
-                </div>
-               <div class="form-group">
-                    <label for="cidade" class="col-sm-3 control-label">Cidade:</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="cidade" id="cidade" placeholder="" class="form-control" autofocus required>
-                    </div>
-                </div> 
-                  <div class="form-group">
-                    <label for="estado" class="col-sm-3 control-label">Estado:</label>
-                    <div class="col-sm-2">
-                        <input type="text" name="estado" id="estado" placeholder="" class="form-control" autofocus required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="comple" class="col-sm-3 control-label">Complemento:</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="comple" id="comple" placeholder="" class="form-control" autofocus>
-                    </div>
-                </div>
+                
                 <div class="form-group">
                     <label for="file" class="col-sm-3 control-label">Selecione uma Imagem</label>
                     <div class="col-sm-9">
                         <input type="file" name="file" id="file" placeholder="" class="form-control" autofocus required>
                     </div>
                 </div>
-  
-                
-                
+              
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
                         <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
                     </div>
                 </div>
-            </form> <!-- /form -->
+   
+       
+                            
+
+          </form>   <!-- /form -->
+                    
+      
         </div> <!-- ./container -->
     </body>
 </html>

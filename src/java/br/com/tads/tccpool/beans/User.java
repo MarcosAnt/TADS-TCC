@@ -5,11 +5,13 @@
  */
 package br.com.tads.tccpool.beans;
 
+import java.io.Serializable;
+
 /**
  *
  * @author onurb
  */
-public class User {
+public class User implements Serializable {
     private int id;             //Número identificador do usuário
     private String nome;        //Nome do usuário
     private String cpf;         //CPF do usuário

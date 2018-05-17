@@ -85,6 +85,15 @@ public class MainPageServlet extends HttpServlet {
                             
                       switch(tipo){
                         case "imovel":
+                            List<Categoria> listaCategoriaImovel = new ArrayList<Categoria>();
+                            try {
+                                listaCategoriaImovel = MainPageFacade.listaCategoriasImovel();
+                            } catch (AcessoBdException e) {
+                                e.printStackTrace();
+                                String param = URLEncoder.encode("Erro na servlet cadastro " + e.getMessage() + " - " + e.getCause().getMessage() + "]", "UTF-8");
+                                response.sendRedirect("index.jsp?msg=" + param);
+                            }
+                            session.setAttribute("listaCatImovel", listaCategoriaImovel);
                             rd2 = request.getRequestDispatcher("cadastroImovel.jsp");
                             rd2.forward(request, response);
                             break;
@@ -98,6 +107,7 @@ public class MainPageServlet extends HttpServlet {
                             break;
                     }
                     break;
+                    
             }
             
         }

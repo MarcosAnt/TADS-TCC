@@ -37,4 +37,13 @@ public class MainPageFacade {
            dao.close();
        }
     } 
+    
+    public static List<Categoria> listaCategoriasImovel() throws AcessoBdException, SQLException{
+       CategoriaDAO dao = new CategoriaDAO();
+        try{ 
+            return dao.getCategoriasImovel();
+       }finally{
+           dao.close();
+       }    
+    } 
 }

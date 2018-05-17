@@ -1,13 +1,14 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <a href="AnuncioServlet?action=BUSCARIMOVEL">Im√≥vel</a></br>
-        <a href="AnuncioServlet?action=BUSCARMOVEL">M√≥vel</a></br>
-        <a href="AnuncioServlet?action=BUSCARMATERIAL">Material</a></br>
-    </body>
-</html>
+<!-- CabeÁalho -->
+<%@include file="head.jsp" %>
+<c:if test="${(empty(user))}">
+    <c:redirect url="index.jsp">
+        <c:param name="msg" value="FaÁa login para acessar esta p·gina!"></c:param>
+    </c:redirect>
+</c:if>
+<div class="list-group">
+    <a class="list-group-item" href="AnuncioServlet?action=BUSCARIMOVEISPEND">Im&&oacute;vel</a>
+    <a class="list-group-item" href="AnuncioServlet?action=BUSCARMOVEL">M&oacute;vel</a>
+    <a class="list-group-item" href="AnuncioServlet?action=BUSCARMATERIAL">Material</a>
+</div>
+<!-- RodapÈ -->
+<%@include file="footer.jsp" %>

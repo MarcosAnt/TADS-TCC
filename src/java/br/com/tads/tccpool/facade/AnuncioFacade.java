@@ -18,7 +18,7 @@ import java.util.List;
  * @author onurb
  */
 public class AnuncioFacade {
-    public static Imovel insereImovel(Imovel i, int categoria, String caminho) throws AcessoBdException, SQLException{
+    public static Imovel insereImovel(Imovel i, int categoria, List<String> caminho) throws AcessoBdException, SQLException{
         AnuncioDAO dao = new AnuncioDAO();
         dao.inserirImovel(i, categoria, caminho);
         dao.close();
@@ -49,5 +49,12 @@ public class AnuncioFacade {
         AnuncioDAO dao = new AnuncioDAO();
         return dao.buscarPendente();
     }
-
+    public static Imovel buscarImovelPorId(int id) throws SQLException{
+        AnuncioDAO dao = new AnuncioDAO();
+        return dao.buscarImovelPorId(id);
+    }
+    public static void alterarStatus(String status, int id) throws SQLException{
+        AnuncioDAO dao = new AnuncioDAO();
+        dao.aprovarAnuncio(status, id);
+    }
 }

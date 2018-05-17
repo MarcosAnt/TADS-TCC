@@ -12,41 +12,38 @@ import java.io.Serializable;
  *
  * @author Diego
  */
-public class Movel implements Anunciavel, Serializable {
+public class Movel implements Serializable {
     private String titulo;
     private String descricao;
     private Float preco;
     private int tipo;
 
-    @Override
+    public Movel() {}
+    
     public void setDescricao(String s) {
         this.descricao = s;
-        }
+    }
 
-    @Override
     public String getDescricao() {
         return descricao;
-        }
+    }
 
-    @Override
     public void setPreco(float preco) {
         this.preco = preco;
-         }
+    }
 
-    @Override
     public float getPreco() {
         return preco;
-       }
+    }
 
-    @Override
     public String getTitulo() {
         return titulo;
-       }
+    }
 
-    @Override
+ 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-       }
+    }
     
     
 }

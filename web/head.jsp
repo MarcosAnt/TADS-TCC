@@ -22,6 +22,7 @@
 
         <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/css/shop-homepage.css" rel="stylesheet">
+        <link href="assets/css/mainCss.css" rel="stylesheet">
         
     </head>
     <body>

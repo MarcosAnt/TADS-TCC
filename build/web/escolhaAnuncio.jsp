@@ -4,16 +4,17 @@
     Author     : onurb
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <a href="MainPageServlet?action=ANUNCIO">ImÃ³vel</a></br>
-        <a href="">MÃ³vel</a></br>
-        <a href="">Material</a></br>
-    </body>
-</html>
+<!-- Cabeçalho -->
+<%@include file="head.jsp" %>
+<c:if test="${(empty(user))}">
+    <c:redirect url="index.jsp">
+        <c:param name="msg" value="Faça login para acessar esta página!"></c:param>
+    </c:redirect>
+</c:if>
+<div class="list-group">
+    <a class="list-group-item" href="MainPageServlet?action=ANUNCIO&tipo=imovel">Imóvel</a>
+    <a class="list-group-item" href="MainPageServlet?action=ANUNCIO&tipo=movel">Móvel</a>
+    <a class="list-group-item" href="MainPageServlet?action=ANUNCIO&tipo=material">Material</a>
+</div>
+<!-- Rodapé -->
+<%@include file="footer.jsp" %>

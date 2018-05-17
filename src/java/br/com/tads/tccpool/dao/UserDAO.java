@@ -192,16 +192,7 @@ public class UserDAO {
             }
         }
     }
-    /*
-    "UPDATE tb_endereco SET\n" +
-        "NM_RUA = ?," +
-        "NM_ESTADO = ?," +
-        "NR_RUA = ?," +
-        "NR_CEP = ?," +
-        "DS_COMPLEMENTO = ?," +
-        "NM_CIDADE = ?\n" +
-    "WHERE NR_SEQ = ?";
-    */
+
     public void editarUser(User u, String CPFUser) {
         try{
             stmt = con.prepareStatement(QUERY_EDIT_END);

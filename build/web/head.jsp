@@ -10,6 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
         <c:choose>
             <c:when test="${title != null}">
                 <title>Mercad&atilde;o do Aluno <c:out value="| ${title}"/></title>
@@ -28,7 +29,14 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="index.jsp">Mercad&atilde;o do Aluno</a>
+                <c:choose>
+                    <c:when test="${(empty(user))}">
+                        <a class="navbar-brand" href="index.jsp">Mercad&atilde;o do Aluno</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="navbar-brand" href="home.jsp">Mercad&atilde;o do Aluno</a>
+                    </c:otherwise>
+                </c:choose>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -47,7 +55,7 @@
                         <li class="nav-item">
                             <c:choose>
                                 <c:when test="${user != null}">
-                                    <a class="nav-link" href="login.jsp?action=logout">Logout</a>                                    
+                                    <a class="nav-link" href="LoginServlet.jsp?action=LOGOUT">Logout</a>                                    
                                 </c:when>
                                 <c:otherwise>
                                     <a class="nav-link" href="login.jsp">Login</a>                                    

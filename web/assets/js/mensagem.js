@@ -19,7 +19,7 @@ $(document).ready(function(){
             dataType: 'html',
             success: function (resp) {
                 console.log(resp);
-                $('#respostaAjax').append(resp);
+                $('#respostaAjax ul li').append(resp);
             },
             error: function (resp) {
                 console.log(resp);

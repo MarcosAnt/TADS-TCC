@@ -23,6 +23,7 @@
 
         <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/css/shop-homepage.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="assets/css/mainCss.css" rel="stylesheet">
         
     </head>
@@ -55,7 +56,7 @@
                         <li class="nav-item">
                             <c:choose>
                                 <c:when test="${user != null}">
-                                    <a class="nav-link" href="LoginServlet.jsp?action=LOGOUT">Logout</a>                                    
+                                    <a class="nav-link" href="LoginServlet?action=LOGOUT">Logout</a>                                    
                                 </c:when>
                                 <c:otherwise>
                                     <a class="nav-link" href="login.jsp">Login</a>                                    

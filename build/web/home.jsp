@@ -23,7 +23,7 @@
     </div>
 </div>
 <div class="col-lg-9">
-    <div class="panel">
+    <!--div class="panel">
         <div class="panel-body">
             <textarea class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
             <div class="mar-top clearfix">
@@ -33,7 +33,7 @@
                 <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#" data-original-title="Add File" data-toggle="tooltip"></a>
             </div>
         </div>
-    </div>
+    </div-->
     <div class="panel panel-body">
         <!-- Timeline -->
         <!--===================================================-->

@@ -7,6 +7,7 @@ package br.com.tads.tccpool.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,12 +38,29 @@ public class MensagemServlet extends HttpServlet {
             int idUsuario = Integer.parseInt(request.getParameter("ID_USUARIO"));
             int idAnuncio = Integer.parseInt(request.getParameter("ID_ANUNCIO"));
             
+            Calendar data = Calendar.getInstance();
+            int horas = data.get(Calendar.HOUR_OF_DAY);
+            int minutos = data.get(Calendar.MINUTE);
             try {
-                out.write("<div class=\"card\" style=\"background-color: lightgray\">"
-                        + "<p>Mensagem= " + msg + "</p>"
-                        + "<p>Usuario= " + String.valueOf(idUsuario) + "</p>"
-                        + "<p>Anuncio= " + String.valueOf(idAnuncio) + "</p>"
-                        + "</div>");
+                out.write("<div class=\"row p-1 pt-3 pr-4\">\n" +
+                          "    <div class=\"col-lg-2 col-3 user-img text-center\">\n" +
+                          "        <img src=\"img/profile.jpg\" class=\"main-cmt-img\">\n" +
+                          "    </div>\n" +
+                          "    <div class=\"col-lg-10 col-9 user-comment bg-light rounded pb-1\">\n" +
+                          "        <div class=\"row\">\n" +
+                          "            <div class=\"col-lg-8 col-6 border-bottom pr-0\">\n" +
+                          "                <p class=\"w-100 p-2 m-0\">Mensagem: " + msg + ", Usuario: " + idUsuario + ", Anúncio: " + idAnuncio + "</p>\n" +
+                          "            </div>\n" +
+                          "            <div class=\"col-lg-4 col-6 border-bottom\">\n" +
+                          "                <p class=\"w-100 p-2 m-0\"><span class=\"float-right\"><i class=\"fa fa-clock-o mr-1\" aria-hidden=\"true\"></i>" + String.valueOf(horas) + ":" + String.valueOf(minutos) + "</span></p>\n" +
+                          "            </div>\n" +
+                          "        </div>\n" +
+                          "        <div class=\"user-comment-desc p-1 pl-2\">\n" +
+                          "            <p class=\"m-0 mr-2\"><span><i class=\"fa fa-thumbs-up mr-1\" aria-hidden=\"true\"></i></span>490</p>\n" +
+                          "            <p class=\"m-0 mr-2\"><span><i class=\"fa fa-thumbs-down mr-1\" aria-hidden=\"true\"></i></span>450</p>\n" +
+                          "        </div>\n" +
+                          "    </div>\n" +
+                          "</div>");
             }
             catch(Exception e) {
                 out.write("Todos os campos devem ser preenchidos!!");

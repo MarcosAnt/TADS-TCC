@@ -8,10 +8,13 @@ package br.com.tads.tccpool.facade;
 import br.com.tads.tccpool.beans.Imovel;
 import br.com.tads.tccpool.beans.Material;
 import br.com.tads.tccpool.beans.Movel;
+import br.com.tads.tccpool.beans.Anuncio;
 import br.com.tads.tccpool.dao.AnuncioDAO;
 import br.com.tads.tccpool.exception.AcessoBdException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -56,5 +59,19 @@ public class AnuncioFacade {
     public static void alterarStatus(String status, int id) throws SQLException{
         AnuncioDAO dao = new AnuncioDAO();
         dao.aprovarAnuncio(status, id);
+    }
+    
+    public static List<Anuncio> buscarAnuncioAprovado() {
+        AnuncioDAO dao = new AnuncioDAO();
+        List<Anuncio> anunciosAprovados = null;
+        
+        try {
+            anunciosAprovados = dao.buscarAnuncioAprovado();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(AnuncioFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return anunciosAprovados;
     }
 }

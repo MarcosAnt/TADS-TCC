@@ -23,19 +23,14 @@ import java.util.List;
  */
 public class AnuncioDAO {
 
-
-
-
-    
-    
     private static final String QUERY_INSERT_IMOVEL ="INSERT INTO tb_imovel (NR_QNT_PESSOAS,NR_PET, TB_CATEGORIA_IMOVEL_ID_CATEGORIA_IMOVEL) VALUES (?,?,?);";
     private static final String QUERY_INSERT_END = "INSERT INTO tb_endereco_anuncio (DS_RUA, DS_ESTADO,NR_NUMERO,NR_CEP,DS_COMPLEMENTO,DS_CIDADE)"
 
             + " VALUES (?,?,?,?,?,?)";
     private static final String QUERY_INSERT_IMOVEL_ANUNCIO = "INSERT INTO tb_anuncio "
             + "(DS_DESCRICAO,NR_VALOR,TB_CATEGORIA_ID_CATEGORIA,TB_STATUS_ID_STATUS,TB_ENDERECO_ID_ENDERECO,TB_IMOVEL_idTB_IMOVEL,DS_TITULO) "
-            + "VALUES " +
-"             (?,?,?,?,?,(select max(id_imovel) from tb_imovel),?)";
+            + "VALUES "
+            + "(?,?,?,?,?,(select max(id_imovel) from tb_imovel),?)";
     private final String QUERY_CONSULTA_PENDENTES_IMOVEL = "SELECT\n"
             + "             tb_imovel.ID_IMOVEL,\n"
             + "             tb_imovel.NR_PET,\n"
@@ -69,7 +64,7 @@ public class AnuncioDAO {
             + "             AND TB_ANUNCIO.TB_CATEGORIA_ID_CATEGORIA = ?";
     
 
-          private final String QUERY_CONSULTA_IMOVEL_ID = "SELECT "
+    private final String QUERY_CONSULTA_IMOVEL_ID = "SELECT "
             + "tb_imovel.NR_PET, "
             + "tb_imovel.NR_QNT_PESSOAS, "
             + "tb_categoria_imovel.DS_DESCRICAO AS DESC_TIPO, "
@@ -93,23 +88,6 @@ public class AnuncioDAO {
             + "tb_categoria_imovel ON TB_CATEGORIA_IMOVEL_ID_CATEGORIA_IMOVEL = ID_CATEGORIA_IMOVEL "
             + "WHERE "
             + "tb_anuncio.ID_ANUNCIO = ?";
-    
-
-
-
-
-
-    
-    
-    
-    
-    
-    
-    /*private static final String QUERY_INSERT_IMOVEL_ANUNCIO = "INSERT INTO tb_anuncio (DS_DESCRICAO,NR_VALOR,TB_CATEGORIA_ID_CATEGORIA,TB_STATUS_ID_STATUS"
-            + ",TB_ENDERECO_ID_ENDERECO,DS_TITULO) VALUES"
-            + "(?,?,?,?,?,?)";*/
-
-    
 
     private static final String QUERY_INSERT_CAMINHO = "INSERT INTO tb_fotos(ds_caminho,tb_anuncio_id_anuncio)VALUES(?,?)";
 
@@ -123,61 +101,24 @@ public class AnuncioDAO {
 
     private final String QUERY_BUSCAR_FOTOS_POR_ID = "SELECT * FROM TB_FOTOS WHERE TB_ANUNCIO_ID_ANUNCIO = ?";
 
-
-
     private final String UPDATE_STATUS = "UPDATE TB_ANUNCIO SET TB_STATUS_ID_STATUS = ? WHERE ID_ANUNCIO = ?";
-
-   /* private final String QUERY_CONSULTA_IMOVEL_ID = "SELECT"
-            + " TB_ANUNCIO.ID_ANUNCIO,"
-            + " TB_ANUNCIO.DS_DESCRICAO,"
-            + " TB_ANUNCIO.NR_VALOR,"
-            + " TB_ANUNCIO.TB_CATEGORIA_ID_CATEGORIA,"
-            + " TB_ANUNCIO.TB_STATUS_ID_STATUS,"
-            + " TB_ANUNCIO.TB_ENDERECO_ID_ENDERECO,"
-
-            + " TB_ANUNCIO.DS_TITULO,"
-            + " tb_endereco_anuncio.ID_ENDERECO,"
-            + " tb_endereco_anuncio.DS_RUA,"
-            + " tb_endereco_anuncio.DS_ESTADO,"
-            + " tb_endereco_anuncio.NR_NUMERO,"
-            + " tb_endereco_anuncio.NR_CEP,"
-            + " tb_endereco_anuncio.DS_COMPLEMENTO,"
-            + " tb_endereco_anuncio.DS_CIDADE"
-
-
-
-            + " FROM"
-            + " tb_anuncio"
-            + " INNER JOIN"
-            + " tb_endereco_anuncio ON ID_ENDERECO = TB_ENDERECO_ID_ENDERECO"
-
-
-
-            + " WHERE"
-            + " ID_ANUNCIO = ?";*/
     
-    /*private final String QUERY_CONSULTA_PENDENTES = "SELECT"
-            + " TB_ANUNCIO.ID_ANUNCIO,"
-            + " TB_ANUNCIO.DS_DESCRICAO,"
-            + " TB_ANUNCIO.NR_VALOR,"
-            + " TB_ANUNCIO.TB_CATEGORIA_ID_CATEGORIA,"
-            + " TB_ANUNCIO.TB_STATUS_ID_STATUS,"
-            + " TB_ANUNCIO.TB_ENDERECO_ID_ENDERECO,"
-            + " TB_ANUNCIO.DS_TITULO,"
-            + " tb_endereco_anuncio.ID_ENDERECO,"
-            + " tb_endereco_anuncio.DS_RUA,"
-            + " tb_endereco_anuncio.DS_ESTADO,"
-            + " tb_endereco_anuncio.NR_NUMERO,"
-            + " tb_endereco_anuncio.NR_CEP,"
-            + " tb_endereco_anuncio.DS_COMPLEMENTO,"
-            + " tb_endereco_anuncio.DS_CIDADE"
-            + " FROM"
-            + " tb_anuncio"
-            + " INNER JOIN"
-            + " tb_endereco_anuncio ON ID_ENDERECO = TB_ENDERECO_ID_ENDERECO"
-            + " WHERE"
-            + " TB_ANUNCIO.TB_STATUS_ID_STATUS = ?"
-            + " AND TB_ANUNCIO.TB_CATEGORIA_ID_CATEGORIA = ?";*/
+    private final String QUERY_BUSCAR_ANUNCIOS_APROVADOS = "SELECT\n" +
+                                                           "	ID_ANUNCIO,\n" +
+                                                           "	DS_TITULO,\n" +
+                                                           "    ANUNCIO.DS_DESCRICAO,\n" +
+                                                           "    NR_VALOR,\n" +
+                                                           "    CAT_ANUNCIO.DS_DESCRICAO AS DS_CATEGORIA,\n" +
+                                                           "    FOTO.DS_CAMINHO AS DS_CAMINHO\n" +
+                                                           "FROM\n" +
+                                                           "	TB_ANUNCIO AS ANUNCIO\n" +
+                                                           "    INNER JOIN\n" +
+                                                           "		TB_CATEGORIA_ANUNCIO AS CAT_ANUNCIO ON CAT_ANUNCIO.ID_CATEGORIA = ANUNCIO.TB_CATEGORIA_ID_CATEGORIA\n" +
+                                                           "    INNER JOIN\n" +
+                                                           "		TB_FOTOS AS FOTO ON FOTO.TB_ANUNCIO_ID_ANUNCIO = ANUNCIO.ID_ANUNCIO\n" +
+                                                           "WHERE\n" +
+                                                           "	TB_STATUS_ID_STATUS = 2\n"+
+                                                           "    GROUP BY ANUNCIO.ID_ANUNCIO";
 
     private Connection con = null;
     private PreparedStatement stmt = null;
@@ -391,6 +332,23 @@ public class AnuncioDAO {
             stmt.setInt(2, id);
             stmt.executeUpdate();
         }
+    }
+    
+    public List<Anuncio> buscarAnuncioAprovado() throws SQLException {
+        List<Anuncio> lista = new ArrayList<Anuncio>();
+        stmt = con.prepareStatement(QUERY_BUSCAR_ANUNCIOS_APROVADOS);
+        rs = stmt.executeQuery();
+        while(rs.next()) {
+            Anuncio anuncio = new Anuncio();
+            anuncio.setIdAnuncio(rs.getInt("ID_ANUNCIO"));
+            anuncio.setTitulo(rs.getString("DS_TITULO"));
+            anuncio.setValor(rs.getFloat("NR_VALOR"));
+            anuncio.setDescricao(rs.getString("DS_DESCRICAO"));
+            anuncio.setCategoria(rs.getString("DS_CATEGORIA"));
+            anuncio.setCaminhoFoto(rs.getString("DS_CAMINHO"));
+            lista.add(anuncio);
+        }
+        return lista;
     }
     
 }

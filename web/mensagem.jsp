@@ -16,7 +16,8 @@
 
 <div class="col-lg-10">
     <form id="mensagemAjax">
-        <input name="ID_ANUNCIO" value="1" type="hidden">
+        <input name="action" value="ADD" type="hidden">
+        <input name="ID_ANUNCIO" value="4" type="hidden">
         <input name="ID_USUARIO" value="<c:out value="${user.getId()}"/>" type="hidden">
         <div class="form-group">
             <label for="DS_MSG">Mensagem:</label>

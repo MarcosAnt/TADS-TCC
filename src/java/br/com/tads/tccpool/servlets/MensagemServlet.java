@@ -5,8 +5,11 @@
  */
 package br.com.tads.tccpool.servlets;
 
+import br.com.tads.tccpool.beans.Mensagem;
+import br.com.tads.tccpool.facade.MensagemFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,36 +37,29 @@ public class MensagemServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String msg = (String) request.getParameter("DS_MSG").trim();
-            int idUsuario = Integer.parseInt(request.getParameter("ID_USUARIO"));
-            int idAnuncio = Integer.parseInt(request.getParameter("ID_ANUNCIO"));
+            String action = (String) request.getParameter("action").trim();
             
-            Calendar data = Calendar.getInstance();
-            int horas = data.get(Calendar.HOUR_OF_DAY);
-            int minutos = data.get(Calendar.MINUTE);
-            try {
-                out.write("<div class=\"row p-1 pt-3 pr-4\">\n" +
-                          "    <div class=\"col-lg-2 col-3 user-img text-center\">\n" +
-                          "        <img src=\"img/profile.jpg\" class=\"main-cmt-img\">\n" +
-                          "    </div>\n" +
-                          "    <div class=\"col-lg-10 col-9 user-comment bg-light rounded pb-1\">\n" +
-                          "        <div class=\"row\">\n" +
-                          "            <div class=\"col-lg-8 col-6 border-bottom pr-0\">\n" +
-                          "                <p class=\"w-100 p-2 m-0\">Mensagem: " + msg + ", Usuario: " + idUsuario + ", Anúncio: " + idAnuncio + "</p>\n" +
-                          "            </div>\n" +
-                          "            <div class=\"col-lg-4 col-6 border-bottom\">\n" +
-                          "                <p class=\"w-100 p-2 m-0\"><span class=\"float-right\"><i class=\"fa fa-clock-o mr-1\" aria-hidden=\"true\"></i>" + String.valueOf(horas) + ":" + String.valueOf(minutos) + "</span></p>\n" +
-                          "            </div>\n" +
-                          "        </div>\n" +
-                          "        <div class=\"user-comment-desc p-1 pl-2\">\n" +
-                          "            <p class=\"m-0 mr-2\"><span><i class=\"fa fa-thumbs-up mr-1\" aria-hidden=\"true\"></i></span>490</p>\n" +
-                          "            <p class=\"m-0 mr-2\"><span><i class=\"fa fa-thumbs-down mr-1\" aria-hidden=\"true\"></i></span>450</p>\n" +
-                          "        </div>\n" +
-                          "    </div>\n" +
-                          "</div>");
-            }
-            catch(Exception e) {
-                out.write("Todos os campos devem ser preenchidos!!");
+            switch(action) {
+                case "ADD":
+                    String msg = (String) request.getParameter("DS_MSG").trim();
+                    int idUsario = Integer.parseInt(request.getParameter("ID_USUARIO"));
+                    int idAnuncio = Integer.parseInt(request.getParameter("ID_ANUNCIO"));
+                    Mensagem mensagem = new Mensagem();
+                    mensagem.setIdAnuncio(idAnuncio);
+                    mensagem.setIdOrigem(idUsario);
+                    mensagem.setConteudo(msg);
+                    mensagem.setData(Calendar.getInstance());
+                    
+                    String retorno = MensagemFacade.insereComentario(mensagem);
+                    //Escreve o retorno da execução na resposta da requisição e limpa o stream
+                    out.write(retorno);
+                    out.flush();
+                    break;
+                    
+                case "LIST":
+                    /*ArrayList<Mensagem> mensagemList = new ArrayList<Mensagem>();
+                    mensagemList = MensagemFacade.listarComentarios();*/
+                    break;
             }
             
         }

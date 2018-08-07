@@ -12,13 +12,14 @@
     </c:redirect>
 </c:if>
 <!-- importanto CSS para mensagens e comentários -->
-<link href="assets/css/mensagem.css" rel="stylesheet">
+<link href="assets/css/comentario.css" rel="stylesheet">
 
 <div class="col-lg-10">
-    <form id="mensagemAjax">
+    <form id="comentarioAjax">
         <input name="action" value="ADD" type="hidden">
         <input name="ID_ANUNCIO" value="4" type="hidden">
         <input name="ID_USUARIO" value="<c:out value="${user.getId()}"/>" type="hidden">
+        <input name="ID_REPLY" value="" type="hidden">
         <div class="form-group">
             <label for="DS_MSG">Mensagem:</label>
             <textarea id="DS_MSG" name="DS_MSG" class="form-control" cols="25" rows="5"></textarea>
@@ -28,7 +29,7 @@
                 <i class="fa fa-send"></i>
             </button>
         </div>
-    </form> <!-- fim #mensagemAjax -->
+    </form> <!-- fim #comentarioAjax -->
 </div> <!-- fim .col-lg-10 -->
 <div id="respostaAjax" class="col-lg-10 comment-main">
     <ul class="p-0">

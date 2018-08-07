@@ -18,7 +18,7 @@
         <a class="list-group-item" href="UserServlet?action=SEARCH">Editar Perfil</a>
         <a class="list-group-item" href="escolhaAnuncio.jsp">Realizar um Anuncio</a>
         <a class="list-group-item" href="escolhaPendente.jsp">Aprovar Anuncio<br><small>(só vai aparecer para ADM)</small></a>
-        <a class="list-group-item" href="mensagem.jsp">Prot&oacute;tipo Mensagem</a>
+        <a class="list-group-item" href="comentario.jsp">Prot&oacute;tipo Mensagem</a>
         <a class="list-group-item list-group-item-danger" href="LoginServlet?action=LOGOUT">Logout</a>
     </div>
 </div>

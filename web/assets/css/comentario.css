@@ -61,3 +61,11 @@ body{
     border-width: 13px 0 0 13px;
     border-color: #f3f3f3 transparent transparent transparent; 
 }
+
+.like, .unlike, .reply {
+    display: inline;
+}
+
+.like:hover, .unlike:hover, .reply:hover {
+    color: #000000 !important;
+}

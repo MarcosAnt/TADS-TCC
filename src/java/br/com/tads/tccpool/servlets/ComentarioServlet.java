@@ -5,12 +5,14 @@
  */
 package br.com.tads.tccpool.servlets;
 
-import br.com.tads.tccpool.beans.Mensagem;
-import br.com.tads.tccpool.facade.MensagemFacade;
+import br.com.tads.tccpool.beans.Comentario;
+import br.com.tads.tccpool.facade.ComentarioFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marcos
  */
-@WebServlet(name = "MensagemServlet", urlPatterns = {"/MensagemServlet"})
-public class MensagemServlet extends HttpServlet {
+@WebServlet(name = "ComentarioServlet", urlPatterns = {"/ComentarioServlet"})
+public class ComentarioServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,21 +46,41 @@ public class MensagemServlet extends HttpServlet {
                     String msg = (String) request.getParameter("DS_MSG").trim();
                     int idUsario = Integer.parseInt(request.getParameter("ID_USUARIO"));
                     int idAnuncio = Integer.parseInt(request.getParameter("ID_ANUNCIO"));
-                    Mensagem mensagem = new Mensagem();
-                    mensagem.setIdAnuncio(idAnuncio);
-                    mensagem.setIdOrigem(idUsario);
-                    mensagem.setConteudo(msg);
-                    mensagem.setData(Calendar.getInstance());
+                    Comentario comentario = new Comentario();
+                    comentario.setIdAnuncio(idAnuncio);
+                    comentario.setIdOrigem(idUsario);
+                    comentario.setConteudo(msg);
+                    comentario.setData(Calendar.getInstance());
+                    try{
+                        int idReply = Integer.parseInt(request.getParameter("ID_REPLY"));
+                        comentario.setIdPai(idReply);
+                    } catch(NullPointerException | NumberFormatException ex) {
+                        Logger.getLogger(ComentarioFacade.class.getName()).log(Level.INFO, null, ex);
+                    }
                     
-                    String retorno = MensagemFacade.insereComentario(mensagem);
+                    String retorno = ComentarioFacade.insereComentario(comentario);
                     //Escreve o retorno da execução na resposta da requisição e limpa o stream
                     out.write(retorno);
                     out.flush();
                     break;
                     
                 case "LIST":
-                    /*ArrayList<Mensagem> mensagemList = new ArrayList<Mensagem>();
-                    mensagemList = MensagemFacade.listarComentarios();*/
+                    String comentarios;
+                    int anuncio = Integer.parseInt(request.getParameter("anuncio"));
+                    comentarios = ComentarioFacade.listarComentarios(anuncio);
+                    out.write(comentarios);
+                    out.flush();
+                    break;
+                    
+                case "LIKE_COMENTARIO":
+                case "UNLIKE_COMENTARIO":
+                    int idComentario = Integer.parseInt(request.getParameter("comentario"));
+                    if("LIKE_COMENTARIO".equals(action)) {
+                        ComentarioFacade.setLike(idComentario);
+                    }
+                    else if("UNLIKE_COMENTARIO".equals(action)) {
+                        ComentarioFacade.setUnlike(idComentario);
+                    }
                     break;
             }
             

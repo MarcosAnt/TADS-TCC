@@ -7,14 +7,17 @@ import java.util.Calendar;
  * Bean para comentários privados e públicos
  * @author Marcos
  */
-public class Mensagem implements Serializable {
+public class Comentario implements Serializable {
     private int idComentario;
     private String conteudo;
     private int idOrigem;
     private int idAnuncio;
+    private int idPai;
+    private int qtdeLikes;
+    private int qtdeUnlikes;
     private Calendar data;
     
-    public Mensagem(){}
+    public Comentario(){}
 
     public String getConteudo() {
         return conteudo;
@@ -55,5 +58,29 @@ public class Mensagem implements Serializable {
     public void setData(Calendar data) {
         this.data = data;
     }
-    
+
+    public int getQtdeLikes() {
+        return qtdeLikes;
+    }
+
+    public void setQtdeLikes(int qtdeLikes) {
+        this.qtdeLikes = qtdeLikes;
+    }
+
+    public int getQtdeUnlikes() {
+        return qtdeUnlikes;
+    }
+
+    public void setQtdeUnlikes(int qtdeUnlikes) {
+        this.qtdeUnlikes = qtdeUnlikes;
+    }
+
+    public int getIdPai() {
+        return idPai;
+    }
+
+    public void setIdPai(int idPai) {
+        this.idPai = idPai;
+    }
+            
 }

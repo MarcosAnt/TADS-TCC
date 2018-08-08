@@ -4,10 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/home.jsp</file>
+            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/footer.jsp</file>
             <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/comentario.jsp</file>
             <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/beans/Comentario.java</file>
             <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/assets/js/comentario.js</file>
             <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/assets/css/comentario.css</file>
+            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/assets/css/mainCss.css</file>
             <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/facade/ComentarioFacade.java</file>
             <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/dao/ComentarioDAO.java</file>
             <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/servlets/ComentarioServlet.java</file>

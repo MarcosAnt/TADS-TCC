@@ -13,16 +13,22 @@
 </c:if>
 <link href="assets/css/feed-style.css" rel="stylesheet">
 
-<div class="col-lg-3">
-    <div class="list-group">
-        <a class="list-group-item" href="UserServlet?action=SEARCH">Editar Perfil</a>
-        <a class="list-group-item" href="escolhaAnuncio.jsp">Realizar um Anuncio</a>
-        <a class="list-group-item" href="escolhaPendente.jsp">Aprovar Anuncio<br><small>(só vai aparecer para ADM)</small></a>
-        <a class="list-group-item" href="comentario.jsp">Prot&oacute;tipo Mensagem</a>
-        <a class="list-group-item list-group-item-danger" href="LoginServlet?action=LOGOUT">Logout</a>
+<div class="col-3">
+    <div class="menu-fixed-left">
+        <div class="center">
+            <img class="d-block img-fluid rounded-circle" src="https://lh4.googleusercontent.com/-MeKIl588D-U/AAAAAAAAAAI/AAAAAAAAP-g/t7W08EZcRuQ/s96-c/photo.jpg" alt="Third slide">
+            <h4><strong style="color: gray"><c:out value="${user.getNome()}"/></strong></h4>
+        </div>
+        <div class="list-group">
+            <a class="list-group-item" href="UserServlet?action=SEARCH">Editar Perfil</a>
+            <a class="list-group-item" href="escolhaAnuncio.jsp">Realizar um Anuncio</a>
+            <a class="list-group-item" href="escolhaPendente.jsp">Aprovar Anuncio<br><small>(só vai aparecer para ADM)</small></a>
+            <a class="list-group-item" href="comentario.jsp">Prot&oacute;tipo Mensagem</a>
+            <a class="list-group-item list-group-item-danger" href="LoginServlet?action=LOGOUT">Logout</a>
+        </div>
     </div>
 </div>
-<div class="col-lg-9">
+<div class="col-6 menu-fixed-center">
     <div class="panel panel-body">
         <!-- Timeline -->
         <!--===================================================-->
@@ -30,7 +36,7 @@
 
             <!-- Timeline header -->
             <div class="timeline-header">
-                <div class="timeline-header-title bg-success">Now</div>
+                <div class="timeline-header-title bg-dark">Now</div>
             </div>
 
             <div class="timeline-entry">
@@ -114,14 +120,30 @@
                     <div class="timeline-time">11:27</div>
                 </div>
                 <div class="timeline-label">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+                    <<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
                 </div>
             </div>
         </div>
         <!--===================================================-->
         <!-- End Timeline -->
     </div>
-</div> <!-- fim .col-lg-9 -->
+</div> <!-- fim .col-lg-6 -->
+<div class="col-3 panel panel-primary menu-fixed-right">
+    <div class="panel-heading">
+        <h4>Atualiza&ccedil;&otilde;es de Amigos</h4>
+    </div>
+    <div class="panel-body">
+        <div class="well well-sm">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+        </div>
+        <div class="well well-sm">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+        </div>
+        <div class="well well-sm">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+        </div>
+    </div>
+</div>
 
 <!-- Rodapé -->
 <%@include file="footer.jsp" %>

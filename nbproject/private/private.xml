@@ -3,16 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/home.jsp</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/footer.jsp</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/comentario.jsp</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/beans/Comentario.java</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/assets/js/comentario.js</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/assets/css/comentario.css</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/web/assets/css/mainCss.css</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/facade/ComentarioFacade.java</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/dao/ComentarioDAO.java</file>
-            <file>file:/C:/Users/Marcos/Documents/GitHub/TADS-TCC/src/java/br/com/tads/tccpool/servlets/ComentarioServlet.java</file>
+            <file>file:/C:/Users/onurb/Documents/NetBeansProjects/TADS-TCC-master/src/java/br/com/tads/tccpool/facade/LoginFacade.java</file>
+            <file>file:/C:/Users/onurb/Documents/NetBeansProjects/TADS-TCC-master/src/java/br/com/tads/tccpool/servlets/loginGoogle.java</file>
+            <file>file:/C:/Users/onurb/Documents/NetBeansProjects/TADS-TCC-master/web/login.jsp</file>
+            <file>file:/C:/Users/onurb/Documents/NetBeansProjects/TADS-TCC-master/web/perfilBeta.jsp</file>
+            <file>file:/C:/Users/onurb/Documents/NetBeansProjects/TADS-TCC-master/web/home.jsp</file>
+            <file>file:/C:/Users/onurb/Documents/NetBeansProjects/TADS-TCC-master/src/java/br/com/tads/tccpool/servlets/LoginServlet.java</file>
+            <file>file:/C:/Users/onurb/Documents/NetBeansProjects/TADS-TCC-master/src/java/br/com/tads/tccpool/utils/IdTokenVerifierAndParser.java</file>
+            <file>file:/C:/Users/onurb/Documents/NetBeansProjects/TADS-TCC-master/web/uploadPerfil.jsp</file>
+            <file>file:/C:/Users/onurb/Documents/NetBeansProjects/TADS-TCC-master/src/java/br/com/tads/tccpool/servlets/FileUploadDbServlet.java</file>
+            <file>file:/C:/Users/onurb/Documents/NetBeansProjects/TADS-TCC-master/src/java/br/com/tads/tccpool/servlets/uploadServlet.java</file>
         </group>
     </open-files>
 </project-private>

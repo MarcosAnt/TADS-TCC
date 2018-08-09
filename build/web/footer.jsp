@@ -7,15 +7,15 @@
             </div> <!-- ./row -->
         </div> <!-- ./container -->
   
-        <!--footer class="py-5 bg-dark">
+        <footer class="py-3 bg-dark">
             <div class="container">
                 <p id="copyright" class="m-0 text-center text-white">Copyright &COPY; [[ano]] Mercad&atilde;o do Aluno - SEPT - UFPR</p>
             </div>
-        </footer-->
+        </footer>
 
         <!-- Importando: 1-Bootstrap -->
         <script src="assets/bootstrap/js/bootstrap.bundle.js" type="text/javascript"></script>
-        <script src="assets/js/comentario.js" type="text/javascript" charset="UTF-8"></script>
+        <script src="assets/js/mensagem.js" type="text/javascript" charset="UTF-8"></script>
         
         <script type="text/javascript">
             $(document).ready(function(){ 

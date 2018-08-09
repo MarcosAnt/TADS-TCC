@@ -13,11 +13,12 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
     private int id;             //Número identificador do usuário
-    private String nome;        //Nome do usuário
-    private String cpf;         //CPF do usuário
+    private int tipoUusario;    //Define se o Usuário é ADM ou não
     private String email;       //E-mail do usuário
+    private String nome;        //Nome do usuário
+    private String GoogleToken; //Token de login Google
+    private String foto;        //Caminho da foto do usuario
     private String senha;       //Senha do usuário
-    private int instituicao;    //Número identificador do usuário
     private String tel;         //Número de telefone do usuário
     private String cel;         //Número de telefone celular do usuário
     private int cdEndereco;     //Número identificador do endereço do usuário
@@ -36,20 +37,36 @@ public class User implements Serializable {
         this.id = id;
     }
     
+    public int getTipoUusario() {
+        return tipoUusario;
+    }
+
+    public void setTipoUusario(int tipoUusario) {
+        this.tipoUusario = tipoUusario;
+    }
+
+    public String getGoogleToken() {
+        return GoogleToken;
+    }
+
+    public void setGoogleToken(String GoogleToken) {
+        this.GoogleToken = GoogleToken;
+    }
+    
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+    
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public String getEmail() {
@@ -66,14 +83,6 @@ public class User implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public int getInstituicao() {
-        return instituicao;
-    }
-
-    public void setInstituicao(int instituicao) {
-        this.instituicao = instituicao;
     }
 
     public String getTel() {

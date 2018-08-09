@@ -62,7 +62,7 @@ public class MainPageServlet extends HttpServlet {
                         }
                         session.setAttribute("lista", lista);
                         if("EDITAR".equals(action)) {
-                            RequestDispatcher rd = request.getRequestDispatcher("editar.jsp");
+                            RequestDispatcher rd = request.getRequestDispatcher("editarPerfil.jsp");
                             rd.forward(request, response);
                         }
                         else {

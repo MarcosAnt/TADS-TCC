@@ -13,12 +13,10 @@ and open the template in the editor.
     width: 100% !important;
 }
 
-.menu-fixed-left {
+footer {
     position: fixed;
-}
-
-.menu-fixed-center {
-}
-
-.menu-fixed-right {
+    bottom:0;
+    left:0;
+    width: 100%;
+    
 }

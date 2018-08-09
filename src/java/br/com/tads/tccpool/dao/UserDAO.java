@@ -19,10 +19,14 @@ import java.util.logging.Logger;
  * @author onurb
  */
 public class UserDAO {
-    private static final String QUERY_LOGIN = "SELECT NR_SEQ, DS_EMAIL, NM_NOME FROM TB_USUARIO WHERE DS_EMAIL = ? AND DS_SENHA = ?";
-    private static final String QUERY_INSERT_USR = "INSERT INTO TB_USUARIO"
-            + " (NR_CPF,NM_NOME,DS_EMAIL,NR_TELEFONE,NR_CELULAR,CD_INST,CD_ENDERECO,DS_SENHA)"
-            + " VALUES (?,?,?,?,?,?,?,?)";
+    private static final String QUERY_LOGIN = "SELECT NR_SEQ, DS_EMAIL, NM_NOME, TP_USUARIO FROM TB_USUARIO WHERE DS_EMAIL = ? AND DS_SENHA = ?";
+    private static final String QUERY_LOGIN_GOOGLE = "SELECT NR_SEQ, NM_NOME, DS_EMAIL, DS_FOTO,TP_USUARIO FROM TB_USUARIO WHERE DS_EMAIL = ?";
+    private static final String QUERY_SIMPLE_INSERT_USR = "INSERT INTO TB_USUARIO"
+            + " (NM_NOME,DS_EMAIL,DS_SENHA,TP_USUARIO)"
+            + " VALUES (?,?,?,?)";
+    private static final String QUERY_SIMPLE_INSERT_GOOGLE = "INSERT INTO TB_USUARIO"
+            + " (NM_NOME,DS_EMAIL,DS_FOTO,TP_USUARIO)"
+            + " VALUES (?,?,?,?)";
     private static final String QUERY_INSERT_END = "INSERT INTO TB_ENDERECO (NM_RUA,NM_ESTADO,NR_RUA,NR_CEP,DS_COMPLEMENTO,NM_CIDADE)"
             + " values(?,?,?,?,?,?)";
     private static final String QUERY_SELECT_USR = "SELECT\n" +
@@ -92,34 +96,54 @@ public class UserDAO {
     
     public void inserirUser(User u) throws SQLException{
         try{
-            stmt = con.prepareStatement(QUERY_INSERT_END);
-            stmt.setString(1, u.getLogradouro());
-            stmt.setString(2, u.getEstado());
-            stmt.setInt(3, u.getNumero());
-            stmt.setString(4, u.getCep());
-            stmt.setString(5, u.getComplemento());
-            stmt.setString(6, u.getCidade());
-            stmt.executeUpdate();
-            //pegando o id do endereço recem add
-            stmt = con.prepareStatement("SELECT last_insert_id() as ID");
-            rs = stmt.executeQuery();
-            if(rs.next()){
-                stmt = con.prepareStatement(QUERY_INSERT_USR);
-                stmt.setString(1, u.getCpf());
-                stmt.setString(2, u.getNome());
-                stmt.setString(3, u.getEmail());
-                stmt.setString(4, u.getTel());
-                stmt.setString(5, u.getCel());
-                stmt.setInt(6, u.getInstituicao());               
-                stmt.setInt(7, rs.getInt("ID"));
-                stmt.setString(8, u.getSenha());
+                stmt = con.prepareStatement(QUERY_SIMPLE_INSERT_USR);
+                stmt.setString(1, u.getNome());
+                stmt.setString(2, u.getEmail());
+                stmt.setString(3, u.getSenha());
+                stmt.setInt(4, u.getTipoUusario());
                 stmt.executeUpdate();
-            }
-             con.close();
-            
+                con.close();
+                stmt.close();
         }catch(SQLException e){
             throw new RuntimeException(e);
         }
+    }
+    
+    public void inserirUserGoogle(User u) throws SQLException{
+        try{
+                stmt = con.prepareStatement(QUERY_SIMPLE_INSERT_GOOGLE);
+                stmt.setString(1, u.getNome());
+                stmt.setString(2, u.getEmail());
+                stmt.setString(3, u.getFoto());
+                stmt.setInt(4, u.getTipoUusario());
+                stmt.executeUpdate();
+                con.close();
+                stmt.close();
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    
+    
+    public User verificaEmail(String email) throws SQLException{
+        User u = null;
+        try{
+            stmt = con.prepareStatement(QUERY_LOGIN_GOOGLE);
+            stmt.setString(1, email);
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                u = new User();
+                u.setId(rs.getInt("NR_SEQ"));
+                u.setEmail(rs.getString("DS_EMAIL"));
+                u.setNome(rs.getString("NM_NOME"));
+                u.setFoto(rs.getString("DS_FOTO"));
+                u.setTipoUusario(rs.getInt("TP_USUARIO"));
+            }
+        }catch(SQLException e){
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, e);
+            u = null;
+        }
+        return u;
     }
     
     /**
@@ -142,6 +166,7 @@ public class UserDAO {
                 u.setId(rs.getInt("NR_SEQ"));
                 u.setEmail(rs.getString("DS_EMAIL"));
                 u.setNome(rs.getString("NM_NOME"));
+                u.setTipoUusario(rs.getInt("TP_USUARIO"));
             }
         }catch(SQLException e){
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -158,7 +183,7 @@ public class UserDAO {
             if(rs.next()) {
                 User u = new User();
                 u.setId(rs.getInt("NR_SEQ"));
-                u.setCpf(rs.getString("NR_CPF"));
+             //   u.setCpf(rs.getString("NR_CPF"));
                 u.setNome(rs.getString("NM_NOME"));
                 u.setEmail(rs.getString("DS_EMAIL"));
                 u.setSenha(rs.getString("DS_SENHA"));
@@ -170,7 +195,7 @@ public class UserDAO {
                 u.setComplemento(rs.getString("DS_COMPLEMENTO"));
                 u.setEstado(rs.getString("NM_ESTADO"));
                 u.setCidade(rs.getString("NM_CIDADE"));
-                u.setInstituicao(rs.getInt("CD_INST"));
+             //   u.setInstituicao(rs.getInt("CD_INST"));
                 u.setCdEndereco(rs.getInt("CD_ENDERECO"));
                 
                 return u;
@@ -208,12 +233,12 @@ public class UserDAO {
             int editEndOK = stmt.executeUpdate();
             
             stmt = con.prepareStatement(QUERY_EDIT_USR);
-            stmt.setString(1, u.getCpf());
+           // stmt.setString(1, u.getCpf());
             stmt.setString(2, u.getNome());
             stmt.setString(3, u.getEmail());
             stmt.setString(4, u.getTel());
             stmt.setString(5, u.getCel());
-            stmt.setInt(6, u.getInstituicao());
+          //  stmt.setInt(6, u.getInstituicao());
             stmt.setString(7, u.getSenha());
             stmt.setInt(8, u.getId());
             stmt.setString(9, CPFUser);

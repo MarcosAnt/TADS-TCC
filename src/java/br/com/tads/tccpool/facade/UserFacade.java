@@ -27,6 +27,16 @@ public class UserFacade {
         dao.close();
         return u;
     }
+    public static User insereUsuarioGoogle(User u) throws AcessoBdException, SQLException{
+        UserDAO dao = new UserDAO();
+        try{
+            dao.inserirUserGoogle(u);
+        }catch(Exception e){
+            return null;
+        }
+        dao.close();
+        return u;
+    }
     
     public static User buscarUsuario(int idUser) {
         UserDAO dao = new UserDAO();
@@ -43,6 +53,23 @@ public class UserFacade {
             }
         }
     }
+    
+    public static User buscarUsuariogGoogle(String email) {
+        UserDAO dao = new UserDAO();
+        try{
+            return dao.verificaEmail(email);
+        }catch(Exception e){
+            return null;
+        }
+        finally {
+            try {            
+                dao.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
     
     /**
      * Editar ifnormações do usuário no banco de dados

@@ -50,25 +50,23 @@ public class UserServlet extends HttpServlet {
                 case "ADD":{
                     
                     u.setNome(request.getParameter("nome"));
-                    u.setCpf(request.getParameter("cpf"));
+                    
                     u.setEmail(request.getParameter("email"));
                     u.setSenha(MD5.criptografar(request.getParameter("senha")));
-                    u.setInstituicao(Integer.parseInt(request.getParameter("inst")));
-                    u.setTel(request.getParameter("tel"));
-                    if(!(request.getParameter("cel").equalsIgnoreCase("")))
+                    
+                    //temporariamente só irei cadastrar usuários comuns
+                    u.setTipoUusario(2);
+ 
+                    /*if(!(request.getParameter("cel").equalsIgnoreCase("")))
                         u.setCel(request.getParameter("cel"));
                     else
-                        u.setCel("");
-                    u.setLogradouro(request.getParameter("rua"));
-                    u.setNumero(Integer.parseInt(request.getParameter("num")));
-                    u.setCep(request.getParameter("cep"));
-                    u.setCidade(request.getParameter("cidade"));
-                    u.setEstado(request.getParameter("estado"));
-                    if(!(request.getParameter("comple").equalsIgnoreCase("")))
+                        u.setCel("");*/
+                    
+                    /*if(!(request.getParameter("comple").equalsIgnoreCase("")))
                         u.setComplemento(request.getParameter("comple"));
                     else
                         u.setComplemento(null);
-                    
+                    */
                     try {
                         User userLogado = UserFacade.insereUsuario(u);
                         if(userLogado == null) {
@@ -92,7 +90,7 @@ public class UserServlet extends HttpServlet {
                     
                     u.setId(userSearch.getId());
                     u.setNome(request.getParameter("nome"));
-                    u.setCpf(request.getParameter("cpf"));
+                   // u.setCpf(request.getParameter("cpf"));
                     u.setEmail(request.getParameter("email"));
                     
                     String senha = MD5.criptografar(request.getParameter("senha"));
@@ -107,7 +105,7 @@ public class UserServlet extends HttpServlet {
                         u.setSenha(senha);
                     }
                         
-                    u.setInstituicao(Integer.parseInt(request.getParameter("inst")));
+                   // u.setInstituicao(Integer.parseInt(request.getParameter("inst")));
                     u.setTel(request.getParameter("tel"));
                     if(!(request.getParameter("cel").equalsIgnoreCase("")))
                         u.setCel(request.getParameter("cel"));
@@ -125,16 +123,16 @@ public class UserServlet extends HttpServlet {
                     else
                         u.setComplemento(null);
                     
-                    Boolean editOK = UserFacade.editarUsuario(u, userSearch.getCpf());
+                   // Boolean editOK = UserFacade.editarUsuario(u, userSearch.getCpf());
                     
-                    if(editOK) {
+                   /* if(editOK) {
                         response.sendRedirect("home.jsp");
                         //return para evitar loops
                         return;
                     }
                     else {
                         response.sendRedirect("UserServlet?action=SEARCH");
-                    }
+                    }*/
                     
                     break;
                 }

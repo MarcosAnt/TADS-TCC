@@ -4,14 +4,7 @@
     Author     : Marcos
 --%>
 
-<!-- Cabeçalho -->
-<%@include file="head.jsp" %>
-<c:if test="${(empty(user))}">
-    <c:redirect url="index.jsp">
-        <c:param name="msg" value="Faça login para acessar esta página!"></c:param>
-    </c:redirect>
-</c:if>
-<!-- importanto CSS para mensagens e comentários -->
+
 <link href="assets/css/comentario.css" rel="stylesheet">
 
 <div class="col-lg-10">
@@ -39,4 +32,3 @@
     </ul>
 </div> <!-- fim #respostaAjax -->
 <!-- Rodapé -->
-<%@include file="footer.jsp" %>
